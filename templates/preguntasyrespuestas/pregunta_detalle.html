@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %} Respuestas {% endblock %}
+{% block content %}
+	<h2>{{ pregunta.asunto }}</h2>
+	<p>
+		<h4>Publicado: </h4><br>
+		{{ pregunta.fecha_publicacion|date:"D, d/m/Y" }}
+	</p>
+	<p>
+		{% if pregunta.descripcion %}
+		 	{{ pregunta.descripcion }}
+		{% else %}
+			No se ha incluido descripcion
+		{%endif%}
+	</p>
+	<h3>Respuesta</h3>
+	<ul>
+		{% for respuesta in pregunta.respuesta_set.all %}
+			<li>{{ respuesta.contenido|safe }}</li>
+		{% empty %}
+			<li>Aún no hay respùestas...</li>
+		{% endfor %}
+	</ul>
+{% endblock %}
