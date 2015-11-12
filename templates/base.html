@@ -6,12 +6,26 @@
 </head>
 <body>
 	<div id="header">
+		{% if user.is_authenticated %}
+			<p>
+			Bienvenido, <br> {{ user.username }}<br> | 
+			<a href="{% url "logout" %}">logout</a><br>
+			</p>
+		{% else %}
+			<p>Bienvenido. Por favor <a href="{% url "login" %}">Login</a></p>
+		{% endif %}
 		<h1>Curso de Django. Videotutoriales.com</h1>
 	</div>
 	<div id="content">
 		{% block content %}
 
 		{% endblock %}
+	</div>
+	<div id="navigation">
+		<p>
+			<a href="{% url "homepage" %}">Inicio</a> |
+			<a href="{% url "preguntas" %}">Preguntas</a>
+		</p>
 	</div>
 
 </body>

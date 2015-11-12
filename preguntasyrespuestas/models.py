@@ -15,7 +15,7 @@ class Pregunta(models.Model):
 		return self.fecha_publicacion.date() == timezone.now().date()
 
 	publicado_hoy.boolean = True
-	publicado_hoy.descripcion_corta = '¿Preguntado hoy?'
+	publicado_hoy.short_description = '¿Preguntado hoy?'
 
 class Respuesta(models.Model):
 	Pregunta = models.ForeignKey(Pregunta)

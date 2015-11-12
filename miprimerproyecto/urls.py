@@ -17,7 +17,14 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
+    url(r'^$', 'miprimerproyecto.views.homepage', name='homepage'),
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^preguntas/$', 'preguntasyrespuestas.views.index', name='index'),
+    url(r'^preguntas/$', 'preguntasyrespuestas.views.index', name='preguntas'),
     url(r'^preguntas/(?P<pregunta_id>\d+)/$', 'preguntasyrespuestas.views.pregunta_detalle', name='pregunta_detalle'),
+    url(r'^preguntas/crear/$', 'preguntasyrespuestas.views.pregunta_crear',
+        name="pregunta_crear"),
+    url(r'^preguntas/editar/(?P<pregunta_id>\d+)/$', 'preguntasyrespuestas.views.pregunta_editar',
+        name='pregunta_editar'),
+    url(r'^login/$', 'miprimerproyecto.views.login_page', name='login'),
+    url(r'^logout/$', 'miprimerproyecto.views.logout_view', name='logout'),
 ]
